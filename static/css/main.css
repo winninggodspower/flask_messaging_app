@@ -1,0 +1,25 @@
+body{
+    margin-top: 0px;
+    padding-top: 0px;
+   
+}
+
+h1{
+    text-align: center;
+    color: blue;
+    background-color: silver;
+    
+}
+
+img{
+     display: inline;
+     border-radius:100px;
+}
+
+#date {
+    display: inline;
+}
+
+a{
+    color:red;
+}

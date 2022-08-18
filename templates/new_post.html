@@ -1,0 +1,33 @@
+{% extends "bas.html" %}
+
+{% block head %}
+    <title>Edit</title>
+{% endblock %}
+    
+
+{% block body %}
+<h1>New Post</h1>
+    <hr>
+    <h2>New Post:</h2>
+    <form action="/post/new" class="form" method="POST">
+        <div class="form-group ">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" name='title' id='title' placeholder="Enter Title" aria-label="Enter Title" required class="form-control">
+        </div>
+        <br>
+        <div class="form-group ">
+            <label for="author" class="form-label">Author:</label>
+            <input type="text" class="form-control" placeholder="Enter Author" aria-label="Enter Author" name="author">
+        </div>
+        <br>
+        <div class="form-group ">
+            <label for="content" class="form-label">Content:</label>
+            <textarea class="form-control" name="content"  rows="3" placeholder="Enter Content" aria-label="Enter Content" required></textarea>
+        </div>
+        <br>
+        <div>
+            <input type="submit" class="btn btn-success mt-2 fw-bold " value='Post'>
+        </div>
+        <hr>
+    </form>
+{% endblock %}

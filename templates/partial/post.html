@@ -1,0 +1,21 @@
+{%for post in posts %}
+    {% if loop.last %}
+        <br class="" hx-get="{{ url_for('get_posts') }}?offset={{offset}}" hx-trigger="revealed" hx-target="#post-section" hx-swap="beforeend">
+    {% else %}
+        <br>
+    {% endif %}
+    <h2> {{post['title']}}</h2>
+    {% if post['author'] %}
+        <small>Written by {{post['author']}} on {{post['date_posted']}}</small>
+    {% else %}
+        <small>Written by Unknown on {{post['date_posted']}}</small>
+    {% endif %}
+    <br><br>
+
+    <p style="white-space: pre-wrap;">{{post['content']}}</p>
+    <a href="/json/delete/{{post['id']}}" id="delete" class="btn btn-danger">Delete</a>
+    <a href="/json/edit/{{post['id']}}" id="edit" class="btn btn-primary">Edit</a><br><br>
+
+    <br>
+    <hr>
+{% endfor %}
