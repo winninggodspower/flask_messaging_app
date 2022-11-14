@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <br>
+        <div class="">
+            <h1 class="d-inline">All Post</h1>
+            <a href="{{url_for('new_post')}}" class="btn btn-success d-inline float-end">+ Add Post</a>
+        </div>
+        <hr>
+        
+        {%for post in posts %}
+            <div>
+                {% if loop.last %}
+                    <br class="" hx-get="{{ url_for('get_posts') }}?offset={{offset}}" hx-trigger="revealed" hx-target="#post-section" hx-swap="beforeend">
+                {% else %}
+                    <br>
+                {% endif %}
+
+                <h2> {{post.title}}</h2>
+                
+                <div class="d-flex">
+                    <div class="me-2" style="flex-grow: 1;">
+                        <small>Written by <em>{{post.user.username}}</em> on {{post.date_posted}}</small>
+                        <br><br>
+                        <p style="white-space: pre-wrap;">{{post.text}}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        {% if post.user == current_user %}
+                        <a href="/post/edit/{{post.id}}" id="edit" class="btn btn-primary mb-2">Edit</a>
+                            <a href="/post/delete/{{post.id}}" id="delete" class="btn btn-danger ">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <br>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

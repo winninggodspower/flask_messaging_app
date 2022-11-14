@@ -2,6 +2,7 @@
 
 This is a messaging app made with flask without an actual backend but uses __jsondtb__ module which i built, as it's backend. 
 ## functionality
+- complete user authentication system
 - Create post
 - Delete post
 - Update post
