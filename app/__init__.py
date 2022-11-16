@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import os
 
-file_path = os.path.abspath(os.getcwd())+"\database.db"
+file_path = os.path.join(os.path.abspath(os.getcwd()),"database.db")
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = 'f6d89eb8472ebf47c276e0f40171e13e'
