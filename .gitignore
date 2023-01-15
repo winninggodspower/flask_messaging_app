@@ -4,3 +4,4 @@ __pycache__/
 *.db
 *bootstrap-5.1.3-dist/
 venv/
+.env
