@@ -46,7 +46,7 @@ def register():
 @app.route("/login", methods=['POST', "GET"])
 def login():
     if current_user.is_authenticated:
-        flash('you are already logged in')
+        flash('you are already logged in', 'info')
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
