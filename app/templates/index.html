@@ -25,7 +25,7 @@
                 
                 <div class="d-flex">
                     <div class="me-2" style="flex-grow: 1;">
-                        <small>Written by <em>{{post.user.username}}</em> on {{post.date_posted}}</small>
+                        <small>Written by <em>{{post.user.username}}</em>, {{post.date_posted|time_ago}}</small>
                         <br><br>
                         <p style="white-space: pre-wrap;">{{post.text}}</p>
                     </div>

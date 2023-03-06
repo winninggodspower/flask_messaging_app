@@ -11,7 +11,7 @@ print(os.getenv('DB_URI'))
 file_path = os.path.join(os.path.abspath(os.getcwd()),"database.db")
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = 'f6d89eb8472ebf47c276e0f40171e13e'
+app.config["SECRET_KEY"] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
 app.config["USER_IMG_PATH"] = "static/profile_pics"
 
