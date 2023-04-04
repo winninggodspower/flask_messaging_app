@@ -40,18 +40,22 @@
                 <br>
 
                 <div>
-                    <span class="like-btn fs-4" 
-                    {% if liked_posts.get(post.id) %}
-                        style="color: #0d6efd"
-                    {% endif %}
-                    " data-like-id="{{post.id}}" type="button" style="">
-                        <i class="bi 
+                    <span class=" fs-4" >
+                        <img id="{{post.id}}-loading-gif" class="loading-gif" src="{{url_for('static', filename='img/loading.gif')}}" width="50px" alt="loading git">
+                        <div class="like-btn d-inline"
                             {% if liked_posts.get(post.id) %}
-                                bi-hand-thumbs-up-fill 
-                            {% else %}
-                                bi-hand-thumbs-up
-                            {% endif %}">
-                        </i>
+                            style="color: #0d6efd;"
+                            {% endif %}
+                            data-like-id="{{post.id}}" type="button" >
+                                <i class="bi 
+                                {% if liked_posts.get(post.id) %}
+                                    bi-hand-thumbs-up-fill 
+                                {% else %}
+                                    bi-hand-thumbs-up
+                                {% endif %}">
+                                </i>    
+                        </div>
+                        <span id="{{post.id}}-like-count">{{post.likes|length}}</span>
                     </span>                    
                 </div>
                 <hr>
