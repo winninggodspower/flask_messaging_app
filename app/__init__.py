@@ -6,7 +6,6 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()  # loads variables from .env file into environment
-print(os.getenv('DB_URI'))
 
 file_path = os.path.join(os.path.abspath(os.getcwd()),"database.db")
 
@@ -20,6 +19,6 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
 login_manager.login_view = "login"
-login_manager.login_message_category = "info";
+login_manager.login_message_category = "info"
 
 from app import routes, blog_routes

@@ -6,7 +6,7 @@ from flask import redirect,url_for,render_template, flash, request
 from flask_login import login_user, logout_user, current_user, login_required
 
 from app.forms import RegistrationForm, LoginForm
-from app.models import User, Post
+from app.models import User, Post, Like
 from app import db
 from app import bcrypt
 
@@ -26,7 +26,14 @@ def save_picture(form_picture):
 @app.route('/',methods=['GET','POST'])
 def home():
     posts = Post.query.all()[:10]
-    return render_template('index.html', posts = posts, offset = 10)
+    liked_posts = {}
+
+    if current_user.is_authenticated:    
+        for post in posts:
+            user_has_liked_post = Like.query.filter_by(post_id=post.id, user_id=current_user.id).first()
+            liked_posts[post.id] = user_has_liked_post
+            
+    return render_template('index.html', posts=posts, liked_posts=liked_posts, offset=10)
 
 
 @app.route("/register",methods=['GET','POST'])

@@ -3,6 +3,13 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
+# overiding email class to strip the email field for empty white space
+class Email(Email):
+    def __call__(self, form, field):
+        field.data = field.data.strip()
+        super().__call__(form, field)
+
+
 class RegistrationForm(FlaskForm):
     username = StringField('username',
                 validators=[DataRequired(),Length(min=2, max=20)])

@@ -28,6 +28,7 @@ class User(db.Model, UserMixin):
                         nullable = False,
                         default = "default.jpeg")
     posts = db.relationship('Post', backref='user')
+    likes = db.relationship('Like', backref='user')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -47,3 +48,17 @@ class Post(db.Model):
     user_id = db.Column(db.Integer,
                 db.ForeignKey('users.id'),
                 nullable = False)
+    likes = db.relationship('Like', backref='post')
+
+    def post_count(self):
+        return len(self.likes)
+
+class Like(db.Model):
+    id = db.Column(db.Integer,
+                   primary_key=True)
+    user_id = db.Column(db.Integer,
+                db.ForeignKey('users.id'),
+                nullable=False)
+    post_id = db.Column(db.Integer,
+                db.ForeignKey('post.id'),
+                nullable=False)

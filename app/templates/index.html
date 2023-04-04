@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}
-
+    
 {% endblock %}
 {% block body %}
     {% include 'navbar.html' %}
@@ -38,9 +38,27 @@
                 </div>
 
                 <br>
+
+                <div>
+                    <span class="like-btn fs-4" 
+                    {% if liked_posts.get(post.id) %}
+                        style="color: #0d6efd"
+                    {% endif %}
+                    " data-like-id="{{post.id}}" type="button" style="">
+                        <i class="bi 
+                            {% if liked_posts.get(post.id) %}
+                                bi-hand-thumbs-up-fill 
+                            {% else %}
+                                bi-hand-thumbs-up
+                            {% endif %}">
+                        </i>
+                    </span>                    
+                </div>
                 <hr>
             </div>
         {% endfor %}
     </div>
+
+    <script src="{{url_for('static', filename='js/like.js' )}}"></script>
 
 {% endblock %}
